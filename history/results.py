@@ -27,6 +27,7 @@ class ChannelData(BaseModel):
     channel_link: str = Field(..., description="Link to the channel")
     content: str = Field(..., description="Message or content text")
     input: str = Field(..., description="Optional input text for context")
+    platform: str = Field(..., description="Source of data")
 
 # -------------------- API Endpoint -------------------- #
 @router.post("/store")
@@ -50,10 +51,11 @@ async def store_channel_data(data: ChannelData = Body(...)):
                     "values": embedding,
                     "metadata": {
                         "verdict": data.verdict,
-                        "platform": "telegram",
+                        "platform": data.platform,
                         "channel_link": data.channel_link,
                         "content": data.content,
                         "input": data.input,
+                        
                     },
                 }
             ]
