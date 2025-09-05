@@ -1,5 +1,5 @@
 import uuid
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Body
 from pydantic import BaseModel, Field
 from typing import Literal
 from pinecone import Pinecone, ServerlessSpec
@@ -31,7 +31,7 @@ class ChannelData(BaseModel):
 
 # -------------------- API Endpoint -------------------- #
 @router.post("/store")
-async def store_channel_data(data: ChannelData):
+async def store_channel_data(data: ChannelData = Body(...)):
     """
     Store a channel message and metadata into Pinecone.
     """
@@ -52,15 +52,19 @@ async def store_channel_data(data: ChannelData):
                     "metadata": {
                         "verdict": data.verdict,
                         "platform": data.platform,
-                        "channel": data.channel,
                         "channel_link": data.channel_link,
                         "content": data.content,
+                        "input": data.input,
                     },
                 }
             ]
         )
 
-        return {"status": "success", "id": vector_id}
+        return {
+            "status": "success",
+            "id": vector_id,
+            "stored_data": data.dict()
+        }
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Pinecone error: {str(e)}")
