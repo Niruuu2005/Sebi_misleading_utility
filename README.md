@@ -8,7 +8,7 @@
 > **AI-Powered Fraud Detection Platform**  
 > A unified system for the Securities and Exchange Board of India (SEBI) to detect and prevent investment fraud across social media and official financial sources.
 
-![FraudGuard Banner](https://via.placeholder.com/800x200/0066cc/ffffff?text=FraudGuard+AI+Fraud+Detection)
+![WorkFlow](https://github.com/Niruuu2005/Sebi_misleading_utility/blob/main/Screenshot%202025-09-05%20204702.png)
 
 ## 📋 Table of Contents
 
@@ -43,6 +43,8 @@ FraudGuard is a comprehensive client-server application that empowers SEBI inves
 - 🤖 Detect and categorize fraudulent content using advanced AI
 - 📊 Access risk assessments and actionable insights in real time
 - 🚨 Receive automated alerts for high-risk content
+
+![Solution](https://github.com/Niruuu2005/Sebi_misleading_utility/blob/main/Screenshot%202025-09-05%20223013.png)
 
 ### Main Components
 
