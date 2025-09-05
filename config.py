@@ -15,4 +15,4 @@ REDDIT_USER_AGENT = "SEBI Hackathon v0.1"
 
 YOUTUBE_API_KEY = "AIzaSyC7RO71lyEh2K7cIVzZ8N5QK7TDby8C0QQ"
 
-OPENAI_API_KEY="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"  # Get from https://platform.openai.com/account/api-keys
+OPENAI_API_KEY="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"  # Get from https://platform.openai.com/account/api-keys

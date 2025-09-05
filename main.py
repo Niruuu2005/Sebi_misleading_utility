@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from scrappers.telegram_apis import channels, chats
-from scrappers import reddit, youtube, exchange_analyzer, discord_analyzer, twitter_analyzer, linkedin
+from scrappers import reddit, youtube, exchange_analyzer, discord_analyzer, twitter_analyzer, linkedin, other
 from history import results
 
 app = FastAPI()
@@ -13,6 +13,7 @@ app.include_router(results.router, prefix="/history", tags=["History"])
 
 # Social Media and Exchange Scrapers
 app.include_router(reddit.router, prefix="/reddit", tags=["Reddit"])
+app.include_router(other.router, prefix="/other", tags=["Other"])
 app.include_router(youtube.router, prefix="/youtube", tags=["YouTube"])
 app.include_router(exchange_analyzer.router, prefix="/exchange", tags=["Exchange"])
 app.include_router(discord_analyzer.router, prefix="/discord", tags=["Discord"])
