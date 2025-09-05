@@ -1,0 +1,3 @@
+API_ID = 21252171
+API_HASH = "485e5fec9f6090c7c0f461ab19bb5140"
+SESSION_NAME = "my_session"
