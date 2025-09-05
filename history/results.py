@@ -1,9 +1,9 @@
 import uuid
 from fastapi import APIRouter, HTTPException, Body
 from pydantic import BaseModel, Field
-from typing import Literal
 from pinecone import Pinecone, ServerlessSpec
-from config import PINECONE_API_KEY, PINECONE_INDEX_NAME
+from sentence_transformers import SentenceTransformer
+from config import PINECONE_API_KEY, PINECONE_INDEX_NAME_HISTORY
 
 router = APIRouter()
 
@@ -11,15 +11,18 @@ router = APIRouter()
 pc = Pinecone(api_key=PINECONE_API_KEY)
 
 # Ensure index exists
-if PINECONE_INDEX_NAME not in [i["name"] for i in pc.list_indexes()]:
+if PINECONE_INDEX_NAME_HISTORY not in [i["name"] for i in pc.list_indexes()]:
     pc.create_index(
-        name=PINECONE_INDEX_NAME,
-        dimension=384,  # adjust if you embed content
+        name=PINECONE_INDEX_NAME_HISTORY,
+        dimension=384,  # matches MiniLM embedding size
         metric="cosine",
         spec=ServerlessSpec(cloud="aws", region="us-east-1"),
     )
 
-index = pc.Index(PINECONE_INDEX_NAME)
+index = pc.Index(PINECONE_INDEX_NAME_HISTORY)
+
+# -------------------- Load Embedding Model -------------------- #
+embedder = SentenceTransformer("all-MiniLM-L6-v2")
 
 # -------------------- Request Schema -------------------- #
 class ChannelData(BaseModel):
@@ -33,15 +36,18 @@ class ChannelData(BaseModel):
 @router.post("/store")
 async def store_channel_data(data: ChannelData = Body(...)):
     """
-    Store a channel message and metadata into Pinecone.
+    Store a channel message and metadata into Pinecone with embeddings.
     """
     try:
         # Generate unique ID
         vector_id = str(uuid.uuid4())
 
-        # (Optional) Embed content for semantic search
-        # For now using dummy embedding (zeros) - replace with real embedding later
-        embedding = [0.0] * 384
+        # Generate embedding from content
+        embedding = embedder.encode(data.content).tolist()
+
+        # Validate embedding
+        if not any(embedding):
+            raise HTTPException(status_code=400, detail="Generated embedding is invalid (all zeros).")
 
         # Upsert into Pinecone
         index.upsert(
@@ -49,14 +55,7 @@ async def store_channel_data(data: ChannelData = Body(...)):
                 {
                     "id": vector_id,
                     "values": embedding,
-                    "metadata": {
-                        "verdict": data.verdict,
-                        "platform": data.platform,
-                        "channel_link": data.channel_link,
-                        "content": data.content,
-                        "input": data.input,
-                        
-                    },
+                    "metadata": data.dict(),
                 }
             ]
         )
