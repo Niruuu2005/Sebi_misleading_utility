@@ -1,0 +1,3133 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "options": {
+          "allowFileUploads": true,
+          "customCss": ":root {\n  /* Colors */\n  --chat--color-primary: #e74266;\n  --chat--color-primary-shade-50: #db4061;\n  --chat--color-primary-shade-100: #cf3c5c;\n  --chat--color-secondary: #20b69e;\n  --chat--color-secondary-shade-50: #1ca08a;\n  --chat--color-white: #ffffff;\n  --chat--color-light: #f2f4f8;\n  --chat--color-light-shade-50: #e6e9f1;\n  --chat--color-light-shade-100: #c2c5cc;\n  --chat--color-medium: #d2d4d9;\n  --chat--color-dark: #101330;\n  --chat--color-disabled: #777980;\n  --chat--color-typing: #404040;\n\n  /* Base Layout */\n  --chat--spacing: 1rem;\n  --chat--border-radius: 0.25rem;\n  --chat--transition-duration: 0.15s;\n  --chat--font-family: (\n    -apple-system,\n    BlinkMacSystemFont,\n    'Segoe UI',\n    Roboto,\n    Oxygen-Sans,\n    Ubuntu,\n    Cantarell,\n    'Helvetica Neue',\n    sans-serif\n  );\n\n  /* Window Dimensions */\n  --chat--window--width: 400px;\n  --chat--window--height: 600px;\n  --chat--window--bottom: var(--chat--spacing);\n  --chat--window--right: var(--chat--spacing);\n  --chat--window--z-index: 9999;\n  --chat--window--border: 1px solid var(--chat--color-light-shade-50);\n  --chat--window--border-radius: var(--chat--border-radius);\n  --chat--window--margin-bottom: var(--chat--spacing);\n\n  /* Header Styles */\n  --chat--header-height: auto;\n  --chat--header--padding: var(--chat--spacing);\n  --chat--header--background: var(--chat--color-dark);\n  --chat--header--color: var(--chat--color-light);\n  --chat--header--border-top: none;\n  --chat--header--border-bottom: none;\n  --chat--header--border-left: none;\n  --chat--header--border-right: none;\n  --chat--heading--font-size: 2em;\n  --chat--subtitle--font-size: inherit;\n  --chat--subtitle--line-height: 1.8;\n\n  /* Message Styles */\n  --chat--message--font-size: 1rem;\n  --chat--message--padding: var(--chat--spacing);\n  --chat--message--border-radius: var(--chat--border-radius);\n  --chat--message-line-height: 1.5;\n  --chat--message--margin-bottom: calc(var(--chat--spacing) * 1);\n  --chat--message--bot--background: var(--chat--color-white);\n  --chat--message--bot--color: var(--chat--color-dark);\n  --chat--message--bot--border: none;\n  --chat--message--user--background: var(--chat--color-secondary);\n  --chat--message--user--color: var(--chat--color-white);\n  --chat--message--user--border: none;\n  --chat--message--pre--background: rgba(0, 0, 0, 0.05);\n  --chat--messages-list--padding: var(--chat--spacing);\n\n  /* Toggle Button */\n  --chat--toggle--size: 64px;\n  --chat--toggle--width: var(--chat--toggle--size);\n  --chat--toggle--height: var(--chat--toggle--size);\n  --chat--toggle--border-radius: 50%;\n  --chat--toggle--background: var(--chat--color-primary);\n  --chat--toggle--hover--background: var(--chat--color-primary-shade-50);\n  --chat--toggle--active--background: var(--chat--color-primary-shade-100);\n  --chat--toggle--color: var(--chat--color-white);\n\n  /* Input Area */\n  --chat--textarea--height: 50px;\n  --chat--textarea--max-height: 30rem;\n  --chat--input--font-size: inherit;\n  --chat--input--border: 0;\n  --chat--input--border-radius: 0;\n  --chat--input--padding: 0.8rem;\n  --chat--input--background: var(--chat--color-white);\n  --chat--input--text-color: initial;\n  --chat--input--line-height: 1.5;\n  --chat--input--placeholder--font-size: var(--chat--input--font-size);\n  --chat--input--border-active: 0;\n  --chat--input--left--panel--width: 2rem;\n\n  /* Button Styles */\n  --chat--button--color: var(--chat--color-light);\n  --chat--button--background: var(--chat--color-primary);\n  --chat--button--padding: calc(var(--chat--spacing) * 1 / 2) var(--chat--spacing);\n  --chat--button--border-radius: var(--chat--border-radius);\n  --chat--button--hover--color: var(--chat--color-light);\n  --chat--button--hover--background: var(--chat--color-primary-shade-50);\n  --chat--close--button--color-hover: var(--chat--color-primary);\n\n  /* Send and File Buttons */\n  --chat--input--send--button--background: var(--chat--color-white);\n  --chat--input--send--button--color: var(--chat--color-light);\n  --chat--input--send--button--background-hover: var(--chat--color-primary-shade-50);\n  --chat--input--send--button--color-hover: var(--chat--color-secondary-shade-50);\n  --chat--input--file--button--background: var(--chat--color-white);\n  --chat--input--file--button--color: var(--chat--color-secondary);\n  --chat--input--file--button--background-hover: var(--chat--input--file--button--background);\n  --chat--input--file--button--color-hover: var(--chat--color-secondary-shade-50);\n  --chat--files-spacing: 0.25rem;\n\n  /* Body and Footer */\n  --chat--body--background: var(--chat--color-light);\n  --chat--footer--background: var(--chat--color-light);\n  --chat--footer--color: var(--chat--color-dark);\n}\n\n\n/* You can override any class styles, too. Right-click inspect in Chat UI to find class to override. */\n.chat-message {\n\tmax-width: 50%;\n}",
+          "responseMode": "lastNode"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -336,
+        -720
+      ],
+      "id": "6ef91aef-dff9-4c06-998f-ba042dc63eac",
+      "name": "When chat message received",
+      "webhookId": "2b4b5035-677a-44fe-9bfc-54e26cccb727"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a strict text classifier.  \nRemove all newlines, tabs, and extra spaces from the message first. Treat it as a single line.  \nClassify the message into exactly ONE of the categories below based on intent/keywords:  \n\n- greetings → if the message contains salutations like hello, hi, hey, good morning, good evening, how are you, etc.  \n- ipo → if the message mentions IPO, initial public offering, new listing, apply for ipo, ipo subscription, allotment, etc.  \n- stock → if the message mentions stocks, shares, equity price, buy/sell stock, stock price, ticker names, or symbols like NSE/BSE tickers.  \n- company → if the message asks about or refers to a specific company name (e.g. TCS, Reliance, Infosys, Google, etc.) without stock/IPO context.  \n- fraud → if the message mentions fraud, scam, fake, cheating, money laundering, bogus, or other fraudulent activity.  \n- manipulation → if the message mentions market manipulation, operator activity, pump and dump, insider trading, cornering, rigging, etc.  \n- finance → if the message is about finance, investment, trading, mutual funds, loans, banking, personal finance, economy, or related terms not covered by other labels.  \n- other → if the message does not clearly belong to any of the above categories.  \n\nRespond with only one label: greetings, ipo, stock, company, fraud, manipulation, finance, or other.  \n\nMessage: \"{{ $('If1').item.json.chatInput }}\"\n",
+        "options": {
+          "returnIntermediateSteps": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1040,
+        -512
+      ],
+      "id": "bb3fdb20-9f9f-47b9-b737-3247209c23cc",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2368,
+        48
+      ],
+      "id": "681e4e08-adcc-48d3-9d14-e663de26e154",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "load",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "sebi-flag-data",
+          "mode": "list",
+          "cachedResultName": "sebi-flag-data"
+        },
+        "prompt": "={{ $('When chat message received').item.json.chatInput }}",
+        "useReranker": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        2640,
+        -176
+      ],
+      "id": "2d5a6a5c-b1db-4f30-bc4d-0ac0c2b8aa00",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "JoioTVObDFMdiNE0",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        2784,
+        48
+      ],
+      "id": "2876cee2-01fc-4a8a-847e-10ae407903c3",
+      "name": "Reranker Cohere",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "embed-english-light-v3.0"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        2656,
+        48
+      ],
+      "id": "36fd8bf3-27bb-4bf8-98e9-fbeef8b26361",
+      "name": "Embeddings Cohere",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "=greetings",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "4661712a-c8f7-4fa2-a044-06e736dad0b1"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0b3799d1-5ede-4d7c-a335-1ff4f8379538",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "ipo",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bafaffff-0108-4107-b07e-7b8ebfd97bd4",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "stock",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6d6dcce3-921a-4e3c-a550-d2dee16d1ffd",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "=company",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8578cf07-5334-43b1-b53a-e4a9f0a89352",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "fraud",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1248870a-22c0-4de6-afca-28a89ee86b4c",
+                    "leftValue": "{{ $json.output }}",
+                    "rightValue": "manipulation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bc0284a2-ccc0-4845-84b3-9c5b40f1b8b3",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "finance",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d44415f0-9b21-43eb-988d-9f9e76c395fd",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "other ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1392,
+        -608
+      ],
+      "id": "de384d73-cf96-45c5-80e0-09e347b5e81d",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2368,
+        -352
+      ],
+      "id": "51bc0621-423e-466e-a8de-d792546f8516",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map((item) => item.json);\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2704,
+        -480
+      ],
+      "id": "f233600a-e441-4031-a3a6-39faf30d4826",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2368,
+        448
+      ],
+      "id": "5e37a211-9804-40f8-bbd4-79661311d9f0",
+      "name": "Google Gemini Chat Model3",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "load",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "sebi-chittorgarh-data",
+          "mode": "list",
+          "cachedResultName": "sebi-chittorgarh-data"
+        },
+        "prompt": "={{ $('When chat message received').item.json.chatInput }}",
+        "useReranker": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        2640,
+        224
+      ],
+      "id": "24de646e-ba37-480e-9797-5b0e8349515f",
+      "name": "Pinecone Vector Store1",
+      "credentials": {
+        "pineconeApi": {
+          "id": "JoioTVObDFMdiNE0",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        2784,
+        448
+      ],
+      "id": "f6fe940e-d638-409b-8a80-67ba9faa7415",
+      "name": "Reranker Cohere1",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "embed-english-light-v3.0"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        2656,
+        448
+      ],
+      "id": "6b1cdf09-3ace-4e3c-8873-ccda74a69220",
+      "name": "Embeddings Cohere1",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2368,
+        848
+      ],
+      "id": "c52da9ff-2138-4d1b-9058-9c0821228593",
+      "name": "Google Gemini Chat Model4",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "load",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "sebi-flag-data",
+          "mode": "list",
+          "cachedResultName": "sebi-flag-data"
+        },
+        "prompt": "={{ $('When chat message received').item.json.chatInput }}",
+        "useReranker": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        2640,
+        624
+      ],
+      "id": "05f11630-63bd-49c3-a58f-497bfedd6fd4",
+      "name": "Pinecone Vector Store2",
+      "credentials": {
+        "pineconeApi": {
+          "id": "JoioTVObDFMdiNE0",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        2784,
+        848
+      ],
+      "id": "d42664c1-5b71-41a3-bc38-76d88cc08488",
+      "name": "Reranker Cohere2",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "embed-english-light-v3.0"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        2656,
+        848
+      ],
+      "id": "d4ff13b7-7a0f-432d-80f2-894dd6116aab",
+      "name": "Embeddings Cohere2",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2368,
+        1248
+      ],
+      "id": "8d70c161-ec53-47ba-a5fd-2d470dd9a9e2",
+      "name": "Google Gemini Chat Model5",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "load",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "sebi-flag-data",
+          "mode": "list",
+          "cachedResultName": "sebi-flag-data"
+        },
+        "prompt": "={{ $('When chat message received').item.json.chatInput }}",
+        "useReranker": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        2640,
+        1024
+      ],
+      "id": "4442d165-900b-4eb6-92af-70f3a53d0fcb",
+      "name": "Pinecone Vector Store3",
+      "credentials": {
+        "pineconeApi": {
+          "id": "JoioTVObDFMdiNE0",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        2784,
+        1248
+      ],
+      "id": "aa59100f-d44e-4849-8928-fdf0bd6db0c1",
+      "name": "Reranker Cohere3",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "embed-english-light-v3.0"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        2656,
+        1248
+      ],
+      "id": "9ab94eed-7943-4419-8cfe-d511f1c21410",
+      "name": "Embeddings Cohere3",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2368,
+        1648
+      ],
+      "id": "831b311d-3581-4f96-a35c-9b09a7676305",
+      "name": "Google Gemini Chat Model6",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "load",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "sebi-flag-data",
+          "mode": "list",
+          "cachedResultName": "sebi-flag-data"
+        },
+        "prompt": "={{ $('When chat message received').item.json.chatInput }}",
+        "useReranker": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        2640,
+        1424
+      ],
+      "id": "abcf5c7e-452e-49e4-9f1e-263da41f12d8",
+      "name": "Pinecone Vector Store4",
+      "credentials": {
+        "pineconeApi": {
+          "id": "JoioTVObDFMdiNE0",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        2784,
+        1648
+      ],
+      "id": "6943c517-bcee-4e97-8869-549d23d2fddd",
+      "name": "Reranker Cohere4",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "embed-english-light-v3.0"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        2656,
+        1648
+      ],
+      "id": "d3f9a77d-7f6c-435d-bfc5-a0d9e32b016d",
+      "name": "Embeddings Cohere4",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2368,
+        2048
+      ],
+      "id": "c5149740-83dd-47e4-9656-07d3b90e8679",
+      "name": "Google Gemini Chat Model7",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "load",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "sebi-flag-data",
+          "mode": "list",
+          "cachedResultName": "sebi-flag-data"
+        },
+        "prompt": "={{ $('When chat message received').item.json.chatInput }}",
+        "useReranker": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        2640,
+        1824
+      ],
+      "id": "b3e8c9a5-2f15-40dc-b75a-bae72aded26e",
+      "name": "Pinecone Vector Store5",
+      "credentials": {
+        "pineconeApi": {
+          "id": "JoioTVObDFMdiNE0",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        2784,
+        2048
+      ],
+      "id": "b7b291ca-abca-4ad7-9c76-98d6b6307300",
+      "name": "Reranker Cohere5",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "embed-english-light-v3.0"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        2656,
+        2048
+      ],
+      "id": "952ba64d-1df3-45e6-b68e-ecda0644cd89",
+      "name": "Embeddings Cohere5",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2368,
+        2560
+      ],
+      "id": "26fa507a-731e-4a44-89d1-4fe5a2f52bff",
+      "name": "Google Gemini Chat Model8",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "load",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "sebi-flag-data",
+          "mode": "list",
+          "cachedResultName": "sebi-flag-data"
+        },
+        "prompt": "={{ $('When chat message received').item.json.chatInput }}",
+        "useReranker": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        2640,
+        2336
+      ],
+      "id": "657099cf-881f-45a1-9575-881821156cf7",
+      "name": "Pinecone Vector Store6",
+      "credentials": {
+        "pineconeApi": {
+          "id": "JoioTVObDFMdiNE0",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        2784,
+        2560
+      ],
+      "id": "3090a1eb-c4c3-4806-b919-beaa95d38adc",
+      "name": "Reranker Cohere6",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "embed-english-light-v3.0"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        2656,
+        2560
+      ],
+      "id": "ceaaf383-59bb-424a-b92e-40f7653d0d72",
+      "name": "Embeddings Cohere6",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a message classifier.\n\nInput: \"{{ $('When chat message received').item.json.chatInput }}\"\n\nTask:\n1. If the message is finance-related in general (SEBI, finance news, markets, trading, etc.) → return 0.\n2. If the message is specifically about IPOs, companies, or stocks → return 1.\n3. Return only the number (0 or 1) as the final output, nothing else.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2288,
+        -576
+      ],
+      "id": "616a4b14-70b4-4fb7-9e97-fc9001786afa",
+      "name": "Greetings"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a query generator for Pinecone.  \nYour task is to take the user input, correct any typos, fix grammar, and return a clean, concise query string.  \nThe output must be ONLY the corrected query string with no explanations or extra text.  \n\nUser Input: {{ $('When chat message received').item.json.chatInput }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2288,
+        -176
+      ],
+      "id": "ba5f335c-f0f8-4917-91eb-621e4c7b9a22",
+      "name": "IPO"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a data extraction and structuring agent.  \nYour task is to take raw scraped webpage text (HTML without tags) and create a clean factual summary.  \n\nInstructions:  \n1. Extract ONLY authentic, verifiable information.  \n   - Examples: company names, stock tickers, financial figures, dates, events, regulatory notices.  \n   - Exclude: advertisements, opinions, filler, speculative language.  \n\n2. Structure the output into clear, fact-based paragraphs (chunks).  \n   - Group related facts together.  \n   - Example: one chunk for stock prices & numbers, one chunk for company background, one chunk for announcements, one chunk for fraud/misleading claims (if present).  \n\n3. Each chunk must be short, precise, and factual.  \n   - Do not add assumptions, analysis, or commentary.  \n   - Just present the extracted facts.  \n\n4. Maintain chronological or logical order if possible.  \n\n5. Output must be plain text, ready to be stored in a database.  \n\nInput: {{ $('When chat message received').item.json.text }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2288,
+        224
+      ],
+      "id": "5f56a36f-b438-4a4a-9887-c9c5a2d16dbe",
+      "name": "Stock"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a query generator for Pinecone.  \nYour task is to take the user input, correct any typos, fix grammar, and return a clean, concise query string.  \nThe output must be ONLY the corrected query string with no explanations or extra text.  \n\nUser Input: {{ $('When chat message received').item.json.chatInput }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2288,
+        624
+      ],
+      "id": "c71129cd-dbec-4250-b2ff-8e37f71d391c",
+      "name": "Company"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a query generator for Pinecone.  \nYour task is to take the user input, correct any typos, fix grammar, and return a clean, concise query string.  \nThe output must be ONLY the corrected query string with no explanations or extra text.  \n\nUser Input: {{ $('When chat message received').item.json.chatInput }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2288,
+        1024
+      ],
+      "id": "3059b382-e408-4dd5-b9d8-59b43f870a27",
+      "name": "Fraud"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a query generator for Pinecone.  \nYour task is to take the user input, correct any typos, fix grammar, and return a clean, concise query string.  \nThe output must be ONLY the corrected query string with no explanations or extra text.  \n\nUser Input: {{ $('When chat message received').item.json.chatInput }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2288,
+        1424
+      ],
+      "id": "d53eca61-e3e6-41ff-b371-8bb1ebc9fd48",
+      "name": "Manipulation"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a query generator for Pinecone.  \nYour task is to take the user input, correct any typos, fix grammar, and return a clean, concise query string.  \nThe output must be ONLY the corrected query string with no explanations or extra text.  \n\nUser Input: {{ $('When chat message received').item.json.chatInput }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2288,
+        1824
+      ],
+      "id": "fe2faf0c-4dd0-4523-8ed4-e2c69df4ddc8",
+      "name": "Finance"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a query generator for Pinecone.  \nYour task is to take the user input, correct any typos, fix grammar, and return a clean, concise query string.  \nThe output must be ONLY the corrected query string with no explanations or extra text.  \n\nUser Input: {{ $('When chat message received').item.json.chatInput }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2288,
+        2336
+      ],
+      "id": "b4b778e2-f8d0-47f1-a0b1-e1c01328884c",
+      "name": "Other"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        3152,
+        3568
+      ],
+      "id": "04034204-42a0-41a5-8569-e4c88f617f8e",
+      "name": "Google Gemini Chat Model9",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a helpful AI fact-checking assistant.  \nAlways write your response as a single friendly text string, warm and conversational.  \nDo not use JSON, bullet points, or labels like \"Verdict/Reason/Correct Info\".  \n\nFollow this structure:\n\n👋 Friendly greeting + thank-you message  \n\n-------------------------------------\n\nQuery: \"<Insert the user’s query>\"  \n\nWrite in flowing paragraphs:  \n\n• First, state whether the claim is misleading or not in a conversational way.  \n\n• Then, in a new paragraph, explain why — start with an engaging phrase like \"Did you know...?\" or \"Many people believe...\" to spark curiosity.  \n\n• In another paragraph, provide the correct information clearly and positively.  \n\n-------------------------------------\n\n✅ Closing message: A warm thank-you and assurance that you’re always here to help.  \n\n** add proper spacing, make it proper para formated. and use of emoji will be appretiated. just make sure not too much",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        3152,
+        3392
+      ],
+      "id": "de8a479e-3780-483e-80c2-607b1f3010ea",
+      "name": "AI Agent1"
+    },
+    {
+      "parameters": {
+        "batchSize": "=1",
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3488,
+        -704
+      ],
+      "id": "33884905-8d50-4de2-8f23-72f9625305b6",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "url": "=https://sebi-misleading-utility.onrender.com/chats/get?channel={{ $json.found_channels }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3680,
+        -624
+      ],
+      "id": "1082ec26-abc6-4a67-adb1-5d4090e299aa",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "found_channels",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3296,
+        -704
+      ],
+      "id": "2d03d9a9-160c-4989-8c16-446094b5cc70",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an assistant that analyzes Telegram chat messages for misleading or fraudulent financial content.\n\nInput:\nYou will receive a JSON array called \"messages\". Each object in the array contains:\n- id: unique message id\n- date: timestamp\n- sender_id: id of the sender\n- text: the message text\n\nTask:\n1. Review all the messages in the array. \n2. If the chat contains misleading, fraudulent, or harmful financial content (e.g., scams, fake offers, manipulated stock tips, unrealistic profit promises, or requests for sensitive information), set the verdict to \"misleading\".\n3. Otherwise, set the verdict to \"non-misleading\".\n4. Provide a short summary of the discussion in simple terms, without including sensitive personal info.\n\nOutput:\nRespond **only** in the format:\nverdict - discussion \n\nRules:\n- Do NOT include raw JSON in the output.\n- The verdict must be either \"misleading\" or \"non-misleading\".\n- The discussion must be concise and professional.\n- Never explain your reasoning or add extra text outside the required format.\n\nchat message: {{ $json.messages }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        4080,
+        -640
+      ],
+      "id": "6ad19242-1ae3-451d-8d98-6beaa1086fa3",
+      "name": "AI Agent2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        4128,
+        -448
+      ],
+      "id": "0b6536a1-cbde-4824-80bf-b938f8ac900d",
+      "name": "Google Gemini Chat Model10",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5eefb4a5-6b29-4a0c-9685-e8a27b169057",
+              "leftValue": "={{ $json.messages_fetched }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3888,
+        -624
+      ],
+      "id": "7881341c-f488-4bc4-abfb-b00066f9a5fc",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "url": "https://sebi-misleading-utility.onrender.com/channels/search_all",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3120,
+        -704
+      ],
+      "id": "ce01bcb5-a6fb-4332-828d-74c13077df97",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://sebi-misleading-utility.onrender.com/history/store",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "verdict",
+              "value": "={{ $json.verdict }}"
+            },
+            {
+              "name": "content",
+              "value": "={{ $json.content }}"
+            },
+            {
+              "name": "input",
+              "value": "={{ $json.input.toJsonString() }}"
+            },
+            {
+              "name": "channel_link",
+              "value": "={{ $json.channel }}"
+            },
+            {
+              "name": "platform",
+              "value": "telegram"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4624,
+        -496
+      ],
+      "id": "2e3e0fc7-2226-4efe-a734-e0a3bdc34d7a",
+      "name": "HTTP Request3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the first input item's \"output\" field\nconst text = $input.first().json.output || \"\";\n\n// Split by \" - \"\nconst parts = text.split(\" - \").map(p => p.trim());\n\n// Build new JSON\nconst result = {\n  verdict: parts[0] || \"\",\n  content: parts[1] || \"\",\n  input: $('HTTP Request1').first().json.messages || \"\",\n  channel: $('HTTP Request1').first().json.channel\n};\n\n// Return as array (n8n expects array of items)\nreturn [{ json: result }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4432,
+        -640
+      ],
+      "id": "cf9a2e2a-7328-41ed-9cd4-b6b2dbcf1f5c",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "09d909f1-5b91-4714-9fd9-5370f819356b",
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "=start_telegram=200605",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -128,
+        -720
+      ],
+      "id": "f13cc826-d4f1-40d8-8af4-0cd8b1c58266",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a strict classifier.  \nDo not explain.  \nReply with only a single number, nothing else.  \n\nRules:  \n- If the input instructs to scan a link AND contains a valid link OR if only a link is provided → return 0  \n- Otherwise, if the input is content (message text, discussion, or anything other than a scan link request) → return 1  \n\nInput: \"{{ $('When chat message received').item.json.chatInput }}\"",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        -496
+      ],
+      "id": "24b14454-49cc-43a2-a388-655cdf53db81",
+      "name": "AI Agent3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "15d8db74-38cd-4375-8bfa-1710ad7f721d",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "1",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        592,
+        -496
+      ],
+      "id": "7bc6e0c1-dc8d-49f8-a280-4d72bcf7a8f0",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        320,
+        -288
+      ],
+      "id": "abf0350f-7307-4ee4-9ebc-ccafa8a0ad21",
+      "name": "Google Gemini Chat Model11",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a strict classifier.  \nDo not explain.  \nReply with exactly one word from this list:  \n[reddit, youtube, instagram, twitter, linkedin, website]  \n\nRules:  \n- If the link belongs to Reddit → return: reddit  \n- If the link belongs to YouTube (youtube.com, youtu.be, shorts, etc.) → return: youtube  \n- If the link belongs to Instagram (instagram.com, reels, etc.) → return: instagram  \n- If the link belongs to Twitter (twitter.com, x.com) → return: twitter  \n- If the link belongs to LinkedIn → return: linkedin  \n- For all other links → return: website  \n\nInput: \"{{ $('When chat message received').item.json.chatInput }}\"\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -608,
+        -176
+      ],
+      "id": "14cb9c93-7b6c-48f1-9cff-e8eb9b33aab8",
+      "name": "AI Agent4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        -16
+      ],
+      "id": "7b1c2714-941e-4a97-98b7-24f3edfa3f76",
+      "name": "Google Gemini Chat Model12",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "reddit",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "83e3650a-ee12-40ad-b478-4b7674b77731"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c5f9562a-50cf-4c3e-b686-608b30e3c32b",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "youtube",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9243f808-633d-4b00-aef1-50cfd351cdeb",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "instagram",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2b9bbddc-eff9-492d-bfcc-3c9702fad684",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "twitter",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "6f5f85dc-06c5-439b-b5c7-342e47667319",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "linkedin",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b62ceb46-d456-4d74-bf58-942b470cf8f1",
+                    "leftValue": "={{ $json.output }}",
+                    "rightValue": "website",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -240,
+        -144
+      ],
+      "id": "d3e9447e-7286-40b6-9859-adf759415410",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://sebi-misleading-utility.onrender.com/reddit/extract",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $('If1').item.json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        -96
+      ],
+      "id": "960326ec-7b15-4494-ae14-a8150ed0fc75",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        496,
+        64
+      ],
+      "id": "d8cd902e-9aa5-4f68-abed-f8a0e0367017",
+      "name": "Google Gemini Chat Model13",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an assistant that analyzes reddit post/disscussion/comments for misleading or fraudulent financial content.\n\nInput:\nu will receive the text that will contain the information about financial facts/discussions/understandings.\n\nTask:\n1. Review all the text provided as input. \n2. If the chat contains misleading, fraudulent, or harmful financial content (e.g., scams, fake offers, manipulated stock tips, unrealistic profit promises, or requests for sensitive information), set the verdict to \"misleading\".\n3. Otherwise, set the verdict to \"non-misleading\".\n4. Provide a short summary of the discussion in simple terms, without including sensitive personal info.\n\nOutput:\nRespond **only** in the format:\nverdict - discussion \n\nRules:\n- Do NOT include raw JSON in the output.\n- The verdict must be either \"misleading\" or \"non-misleading\".\n- The discussion must be concise and professional.\n- Never explain your reasoning or add extra text outside the required format.\n\nchat message: {{ $json.content }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        -96
+      ],
+      "id": "46d013d7-660d-401b-85a3-ab71db4d1568",
+      "name": "AI Agent5"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the first input item's \"output\" field\nconst text = $input.first().json.output || \"\";\n\n// Split by \" - \"\nconst parts = text.split(\" - \").map(p => p.trim());\n\n// Build new JSON\nconst result = {\n  verdict: parts[0] || \"\",\n  content: parts[1] || \"\",\n  input: $('HTTP Request2').first().json.content || \"\",\n  platform: \"reddit\",\n};\n\n// Return as array (n8n expects array of items)\nreturn [{ json: result }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        -96
+      ],
+      "id": "d077bcb5-f65a-45b7-86b8-6410abce773d",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        3904,
+        912
+      ],
+      "id": "658e4c68-437c-49c9-a59f-61559a4ad045",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "https://sebi-misleading-utility.onrender.com/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4112,
+        912
+      ],
+      "id": "1fa1d3f4-120a-4e16-a7a2-6570d14cf3ec",
+      "name": "HTTP Request5"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map((item) => item.json);\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4320,
+        912
+      ],
+      "id": "d98ef855-682a-4920-acd0-d861376be146",
+      "name": "Code5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://sebi-misleading-utility.onrender.com/youtube/extract",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $('If1').item.json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        240
+      ],
+      "id": "126b0b1f-c3e4-4e81-a0a9-7c7ab15c8d8d",
+      "name": "HTTP Request6"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        496,
+        400
+      ],
+      "id": "6a424bcc-0382-44f4-92a6-b587df5e8f42",
+      "name": "Google Gemini Chat Model14",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an assistant that analyzes youtube video for misleading or fraudulent financial content.\n\nInput:\nu will receive the text that will contain the information about financial facts/discussions/understandings.\n\nTask:\n1. Review all the text provided as input. \n2. If the chat contains misleading, fraudulent, or harmful financial content (e.g., scams, fake offers, manipulated stock tips, unrealistic profit promises, or requests for sensitive information), set the verdict to \"misleading\".\n3. Otherwise, set the verdict to \"non-misleading\".\n4. Provide a short summary of the discussion in simple terms, without including sensitive personal info.\n\nOutput:\nRespond **only** in the format:\nverdict - discussion \n\nRules:\n- Do NOT include raw JSON in the output.\n- The verdict must be either \"misleading\" or \"non-misleading\".\n- The discussion must be concise and professional.\n- Never explain your reasoning or add extra text outside the required format.\n\nchat message: {{ $json.content }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        240
+      ],
+      "id": "fc267f6d-08ad-4b54-9b4b-27851d5825c3",
+      "name": "AI Agent6"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the first input item's \"output\" field\nconst text = $input.first().json.output || \"\";\n\n// Split by \" - \"\nconst parts = text.split(\" - \").map(p => p.trim());\n\n// Build new JSON\nconst result = {\n  verdict: parts[0] || \"\",\n  content: parts[1] || \"\",\n  input: $('HTTP Request6').first().json.content || \"\",\n  platform: \"reddit\",\n};\n\n// Return as array (n8n expects array of items)\nreturn [{ json: result }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        848,
+        240
+      ],
+      "id": "4b21fca5-36cb-47c2-aa34-1fb5a52bc699",
+      "name": "Code6"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://sebi-misleading-utility.onrender.com/instagram/extract",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $('If1').item.json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        576
+      ],
+      "id": "f4980a32-b7bd-4dbc-a6e6-ed4f33b2d69c",
+      "name": "HTTP Request8"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        496,
+        736
+      ],
+      "id": "a2fd2468-0575-429f-a4e5-c1b53831d1b9",
+      "name": "Google Gemini Chat Model15",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an assistant that analyzes Instagram post/disscussion/comments for misleading or fraudulent financial content.\n\nInput:\nu will receive the text that will contain the information about financial facts/discussions/understandings.\n\nTask:\n1. Review all the text provided as input. \n2. If the chat contains misleading, fraudulent, or harmful financial content (e.g., scams, fake offers, manipulated stock tips, unrealistic profit promises, or requests for sensitive information), set the verdict to \"misleading\".\n3. Otherwise, set the verdict to \"non-misleading\".\n4. Provide a short summary of the discussion in simple terms, without including sensitive personal info.\n\nOutput:\nRespond **only** in the format:\nverdict - discussion \n\nRules:\n- Do NOT include raw JSON in the output.\n- The verdict must be either \"misleading\" or \"non-misleading\".\n- The discussion must be concise and professional.\n- Never explain your reasoning or add extra text outside the required format.\n\nchat message: {{ $json.content }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        576
+      ],
+      "id": "f85467bd-cd4d-44a4-883b-0f6217358cc8",
+      "name": "AI Agent7"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the first input item's \"output\" field\nconst text = $input.first().json.output || \"\";\n\n// Split by \" - \"\nconst parts = text.split(\" - \").map(p => p.trim());\n\n// Build new JSON\nconst result = {\n  verdict: parts[0] || \"\",\n  content: parts[1] || \"\",\n  input: $('HTTP Request8').first().json.content || \"\",\n  platform: \"reddit\",\n};\n\n// Return as array (n8n expects array of items)\nreturn [{ json: result }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        848,
+        576
+      ],
+      "id": "3b810974-3aca-41a0-8c7f-1a5cac233da6",
+      "name": "Code7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://sebi-misleading-utility.onrender.com/twitter/extract",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $('If1').item.json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        928
+      ],
+      "id": "08f46472-196d-44c2-8a23-662956c8c646",
+      "name": "HTTP Request10"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        496,
+        1088
+      ],
+      "id": "2e8233df-64d3-4469-8249-8ffba68c71ca",
+      "name": "Google Gemini Chat Model16",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an assistant that analyzes twitter post/disscussion/comments for misleading or fraudulent financial content.\n\nInput:\nu will receive the text that will contain the information about financial facts/discussions/understandings.\n\nTask:\n1. Review all the text provided as input. \n2. If the chat contains misleading, fraudulent, or harmful financial content (e.g., scams, fake offers, manipulated stock tips, unrealistic profit promises, or requests for sensitive information), set the verdict to \"misleading\".\n3. Otherwise, set the verdict to \"non-misleading\".\n4. Provide a short summary of the discussion in simple terms, without including sensitive personal info.\n\nOutput:\nRespond **only** in the format:\nverdict - discussion \n\nRules:\n- Do NOT include raw JSON in the output.\n- The verdict must be either \"misleading\" or \"non-misleading\".\n- The discussion must be concise and professional.\n- Never explain your reasoning or add extra text outside the required format.\n\nchat message: {{ $json.content }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        928
+      ],
+      "id": "4e7c58f2-7b69-4fb3-9e78-44906f493ac1",
+      "name": "AI Agent8"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the first input item's \"output\" field\nconst text = $input.first().json.output || \"\";\n\n// Split by \" - \"\nconst parts = text.split(\" - \").map(p => p.trim());\n\n// Build new JSON\nconst result = {\n  verdict: parts[0] || \"\",\n  content: parts[1] || \"\",\n  input: $('HTTP Request10').first().json.content || \"\",\n  platform: \"reddit\",\n};\n\n// Return as array (n8n expects array of items)\nreturn [{ json: result }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        848,
+        928
+      ],
+      "id": "7ea5610f-7dbe-4aaf-b92b-43cbe161e314",
+      "name": "Code8"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://sebi-misleading-utility.onrender.com/linkedin/extract",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $('If1').item.json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        1248
+      ],
+      "id": "77091157-2d9b-41cb-a65f-5461df1fe25b",
+      "name": "HTTP Request12"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        496,
+        1408
+      ],
+      "id": "740957cf-337b-4709-ae81-b8468a848298",
+      "name": "Google Gemini Chat Model17",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an assistant that analyzes linkedin post/disscussion/comments for misleading or fraudulent financial content.\n\nInput:\nu will receive the text that will contain the information about financial facts/discussions/understandings.\n\nTask:\n1. Review all the text provided as input. \n2. If the chat contains misleading, fraudulent, or harmful financial content (e.g., scams, fake offers, manipulated stock tips, unrealistic profit promises, or requests for sensitive information), set the verdict to \"misleading\".\n3. Otherwise, set the verdict to \"non-misleading\".\n4. Provide a short summary of the discussion in simple terms, without including sensitive personal info.\n\nOutput:\nRespond **only** in the format:\nverdict - discussion \n\nRules:\n- Do NOT include raw JSON in the output.\n- The verdict must be either \"misleading\" or \"non-misleading\".\n- The discussion must be concise and professional.\n- Never explain your reasoning or add extra text outside the required format.\n\nchat message: {{ $json.content }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        1248
+      ],
+      "id": "adaea2f1-15d2-4f52-bcea-6d720cb555be",
+      "name": "AI Agent9"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the first input item's \"output\" field\nconst text = $input.first().json.output || \"\";\n\n// Split by \" - \"\nconst parts = text.split(\" - \").map(p => p.trim());\n\n// Build new JSON\nconst result = {\n  verdict: parts[0] || \"\",\n  content: parts[1] || \"\",\n  input: $('HTTP Request12').first().json.content || \"\",\n  platform: \"reddit\",\n};\n\n// Return as array (n8n expects array of items)\nreturn [{ json: result }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        848,
+        1248
+      ],
+      "id": "83738e1d-0dbc-4921-b6b1-3ea3ac93ec5d",
+      "name": "Code9"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the first input item's \"output\" field\nconst text = $input.first().json.output || \"\";\n\n// Split by \" - \"\nconst parts = text.split(\" - \").map(p => p.trim());\n\n// Build new JSON\nconst result = {\n  verdict: parts[0] || \"\",\n  content: parts[1] || \"\",\n  input: $('HTTP Request14').first().json.content || \"\",\n  platform: \"reddit\",\n};\n\n// Return as array (n8n expects array of items)\nreturn [{ json: result }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        848,
+        1568
+      ],
+      "id": "1900a4ed-2000-4557-a6f2-c56adb2c40bd",
+      "name": "Code10"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an assistant that analyzes other links for misleading or fraudulent financial content.\n\nInput:\nu will receive the text that will contain the information about financial facts/discussions/understandings.\n\nTask:\n1. Review all the text provided as input. \n2. If the chat contains misleading, fraudulent, or harmful financial content (e.g., scams, fake offers, manipulated stock tips, unrealistic profit promises, or requests for sensitive information), set the verdict to \"misleading\".\n3. Otherwise, set the verdict to \"non-misleading\".\n4. Provide a short summary of the discussion in simple terms, without including sensitive personal info.\n\nOutput:\nRespond **only** in the format:\nverdict - discussion \n\nRules:\n- Do NOT include raw JSON in the output.\n- The verdict must be either \"misleading\" or \"non-misleading\".\n- The discussion must be concise and professional.\n- Never explain your reasoning or add extra text outside the required format.\n\nchat message: {{ $json.content }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        496,
+        1568
+      ],
+      "id": "82a2455d-ad80-4909-9847-16c242d434e8",
+      "name": "AI Agent10"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        496,
+        1728
+      ],
+      "id": "e43935b3-2d39-4c61-9363-4789fd9ea9e5",
+      "name": "Google Gemini Chat Model18",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://sebi-misleading-utility.onrender.com/other/extract",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $('If1').item.json.chatInput }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        272,
+        1568
+      ],
+      "id": "14460d2c-ca5f-4d05-8948-bafc17ce3340",
+      "name": "HTTP Request14"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract only the text values under pageContent and concatenate them\nconst combinedText = $input.all()\n    .map(item => item.json.pageContent || \"\")  // get the string under pageContent\n    .filter(text => text.trim() !== \"\")        // remove empty strings\n    .join(\"\\n\\n\");                             // join with double newlines for readability\n\n// Return the string itself\nreturn {combinedText};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3712,
+        3392
+      ],
+      "id": "50d563f0-700a-4b1e-8e72-60c28cd63622",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "sebi-flag-data-history",
+          "mode": "list",
+          "cachedResultName": "sebi-flag-data-history"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        3456,
+        3392
+      ],
+      "id": "38e01848-6493-45bd-80b5-92eba83e5094",
+      "name": "Pinecone Vector Store8",
+      "credentials": {
+        "pineconeApi": {
+          "id": "JoioTVObDFMdiNE0",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "embed-english-light-v3.0"
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+      "typeVersion": 1,
+      "position": [
+        3504,
+        3552
+      ],
+      "id": "dcda187b-35b7-4399-be0b-4e923d6802e5",
+      "name": "Embeddings Cohere8",
+      "credentials": {
+        "cohereApi": {
+          "id": "2qwhahfUuQ32IFpP",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        3616,
+        3552
+      ],
+      "id": "badbd0c7-1e5d-4bd5-88c3-adaaf99daf00",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        912,
+        -304
+      ],
+      "id": "70c9a755-2728-4c20-a228-17c8dff6026e",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "93IeLVqm7Ln2g7Qm",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "IPO",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker Cohere": {
+      "ai_reranker": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Cohere": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Greetings",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IPO",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stock",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Company",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Fraud",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Manipulation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Finance",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Other",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Greetings",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Stock",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker Cohere1": {
+      "ai_reranker": [
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Cohere1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Company",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker Cohere2": {
+      "ai_reranker": [
+        [
+          {
+            "node": "Pinecone Vector Store2",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Cohere2": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store2",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Fraud",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker Cohere3": {
+      "ai_reranker": [
+        [
+          {
+            "node": "Pinecone Vector Store3",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Cohere3": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store3",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model6": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Manipulation",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker Cohere4": {
+      "ai_reranker": [
+        [
+          {
+            "node": "Pinecone Vector Store4",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Cohere4": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store4",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model7": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Finance",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker Cohere5": {
+      "ai_reranker": [
+        [
+          {
+            "node": "Pinecone Vector Store5",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Cohere5": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store5",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model8": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Other",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reranker Cohere6": {
+      "ai_reranker": [
+        [
+          {
+            "node": "Pinecone Vector Store6",
+            "type": "ai_reranker",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Cohere6": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store6",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Greetings": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IPO": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Stock": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Company": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fraud": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manipulation": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Finance": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Other": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store3": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store4": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store5": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store6": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model9": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model10": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent3": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model11": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model12": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent4",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent4": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request10",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request12",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model13": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent5",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent5": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request5": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "AI Agent6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model14": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent6",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent6": {
+      "main": [
+        [
+          {
+            "node": "Code6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code6": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request8": {
+      "main": [
+        [
+          {
+            "node": "AI Agent7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model15": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent7",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent7": {
+      "main": [
+        [
+          {
+            "node": "Code7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code7": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request10": {
+      "main": [
+        [
+          {
+            "node": "AI Agent8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model16": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent8",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent8": {
+      "main": [
+        [
+          {
+            "node": "Code8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code8": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request12": {
+      "main": [
+        [
+          {
+            "node": "AI Agent9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model17": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent9",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent9": {
+      "main": [
+        [
+          {
+            "node": "Code9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code9": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code10": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent10": {
+      "main": [
+        [
+          {
+            "node": "Code10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model18": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent10",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request14": {
+      "main": [
+        [
+          {
+            "node": "AI Agent10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store8": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Cohere8": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store8",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Pinecone Vector Store8",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "398c01cf-d9c7-4e47-9f2f-cdc94837488e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7404e603e21b80a7372a8a91020a79afae8eb97f687db2452fa4ad4b13a312ee"
+  },
+  "id": "0p2kGcK97knls0Xm",
+  "tags": []
+}
