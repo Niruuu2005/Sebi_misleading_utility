@@ -2,3 +2,6 @@ fastapi
 uvicorn
 telethon
 pinecone
+youtube-transcript-api
+praw
+google-api-python-client

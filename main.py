@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from telegram_apis import channels, chats
+from scrappers.telegram_apis import channels, chats
+from scrappers import reddit, youtube
 from history import results
 
 app = FastAPI(title="Telegram Stock API", version="1.0")
@@ -8,6 +9,8 @@ app = FastAPI(title="Telegram Stock API", version="1.0")
 app.include_router(channels.router, prefix="/channels", tags=["Channels"])
 app.include_router(chats.router, prefix="/chats", tags=["Chats"])
 app.include_router(results.router, prefix="/history", tags=["History"])
+app.include_router(reddit.router, prefix="/reddit", tags=["reddit"])
+app.include_router(youtube.router, prefix="/yt", tags=["youtube"])
 
 
 @app.get("/")
