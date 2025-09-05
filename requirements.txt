@@ -6,5 +6,4 @@ youtube-transcript-api
 praw
 google-api-python-client
 BeautifulSoup4
-sentence-transformers
 pydantic

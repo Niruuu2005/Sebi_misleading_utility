@@ -2,8 +2,8 @@ import uuid
 from fastapi import APIRouter, HTTPException, Body
 from pydantic import BaseModel, Field
 from pinecone import Pinecone, ServerlessSpec
-from sentence_transformers import SentenceTransformer
-from config import PINECONE_API_KEY, PINECONE_INDEX_NAME_HISTORY
+from openai import OpenAI
+from config import PINECONE_API_KEY, PINECONE_INDEX_NAME_HISTORY, OPENAI_API_KEY
 
 router = APIRouter()
 
@@ -14,15 +14,15 @@ pc = Pinecone(api_key=PINECONE_API_KEY)
 if PINECONE_INDEX_NAME_HISTORY not in [i["name"] for i in pc.list_indexes()]:
     pc.create_index(
         name=PINECONE_INDEX_NAME_HISTORY,
-        dimension=384,  # matches MiniLM embedding size
+        dimension=384,  # Reduced embedding size
         metric="cosine",
         spec=ServerlessSpec(cloud="aws", region="us-east-1"),
     )
 
 index = pc.Index(PINECONE_INDEX_NAME_HISTORY)
 
-# -------------------- Load Embedding Model -------------------- #
-embedder = SentenceTransformer("all-MiniLM-L6-v2")
+# -------------------- OpenAI Client -------------------- #
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 # -------------------- Request Schema -------------------- #
 class ChannelData(BaseModel):
@@ -42,8 +42,13 @@ async def store_channel_data(data: ChannelData = Body(...)):
         # Generate unique ID
         vector_id = str(uuid.uuid4())
 
-        # Generate embedding from content
-        embedding = embedder.encode(data.content).tolist()
+        # Generate 384-dim embedding from content using OpenAI
+        response = client.embeddings.create(
+            model="text-embedding-3-small",
+            input=data.content,
+            dimensions=384  # ✅ request reduced dimension
+        )
+        embedding = response.data[0].embedding
 
         # Validate embedding
         if not any(embedding):
