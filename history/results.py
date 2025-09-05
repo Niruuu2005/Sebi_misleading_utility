@@ -37,7 +37,6 @@ async def store_channel_data(data: ChannelData = Body(...)):
     """
     try:
         # Generate unique ID
-        vector_id = str(uuid.uuid4())
 
         # (Optional) Embed content for semantic search
         # For now using dummy embedding (zeros) - replace with real embedding later
@@ -47,7 +46,6 @@ async def store_channel_data(data: ChannelData = Body(...)):
         index.upsert(
             vectors=[
                 {
-                    "id": vector_id,
                     "values": embedding,
                     "metadata": {
                         "verdict": data.verdict,
@@ -63,7 +61,6 @@ async def store_channel_data(data: ChannelData = Body(...)):
 
         return {
             "status": "success",
-            "id": vector_id,
             "stored_data": data.dict()
         }
 
