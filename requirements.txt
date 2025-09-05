@@ -5,3 +5,4 @@ pinecone
 youtube-transcript-api
 praw
 google-api-python-client
+BeautifulSoup4
