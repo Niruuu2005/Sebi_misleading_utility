@@ -23,8 +23,7 @@ index = pc.Index(PINECONE_INDEX_NAME)
 
 # -------------------- Request Schema -------------------- #
 class ChannelData(BaseModel):
-    verdict: Literal[0, 1] = Field(..., description="0 = non-misleading, 1 = misleading")
-    platform: str = Field(..., description="Platform name (e.g., Telegram, Twitter)")
+    verdict: str = Field(..., description="0 = non-misleading, 1 = misleading")
     channel_link: str = Field(..., description="Link to the channel")
     content: str = Field(..., description="Message or content text")
     input: str = Field(..., description="Optional input text for context")
@@ -51,7 +50,7 @@ async def store_channel_data(data: ChannelData = Body(...)):
                     "values": embedding,
                     "metadata": {
                         "verdict": data.verdict,
-                        "platform": data.platform,
+                        "platform": "telegram",
                         "channel_link": data.channel_link,
                         "content": data.content,
                         "input": data.input,
