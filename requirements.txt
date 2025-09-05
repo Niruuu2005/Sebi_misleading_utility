@@ -7,3 +7,4 @@ praw
 google-api-python-client
 BeautifulSoup4
 pydantic
+openai
